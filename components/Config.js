@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 
 const Data = styled.span`
@@ -19,14 +20,26 @@ const Control = ({ label, value, ...props }) => (
 
 const Box = styled.div.attrs(props => ({
   style: {
-    filter: `drop-shadow(0 ${props.ay}px ${props.ar}px rgba(0,0,0,${props.ao})) drop-shadow(0 ${props.ky}px ${props.kr}px rgba(0,0,0,${props.ko}))`
+    filter: `drop-shadow(0 ${props.ay}px ${props.ar}px rgba(0,0,0,${props.ao})) drop-shadow(0 ${props.ky}px ${props.kr}px rgba(0,0,0,${props.ko}))`,
   }
 }))`
   background: white;
   border-radius: 4px;
-  height: 100px;
-  width: 100px;
+  margin: 0 auto;
 `
+
+const MotionBox = motion.custom(Box)
+
+const boxVariants = {
+  default: {
+    height: '100px',
+    width: '100px',
+  },
+  big: {
+    height: '250px',
+    width: '250px',
+  }
+}
 
 export default function Config() {
   const [ay, setAY] = useState(10)
@@ -37,8 +50,14 @@ export default function Config() {
   const [kr, setKR] = useState(5)
   const [ko, setKO] = useState(0.2)
 
+  const [big, setBig] = useState(false)
+
   return (
     <>
+      <button onClick={() => setBig(big => !big)}>
+        Toggle Bigboi
+      </button>
+
       <h3>Key</h3>
       <Control
         label='y offset'
@@ -98,13 +117,15 @@ export default function Config() {
       />
 
       <div style={{ marginTop: '4rem' }}>
-        <Box
+        <MotionBox
           ay={ay}
           ar={ar}
           ao={ao}
           ky={ky}
           kr={kr}
           ko={ko}
+          variants={boxVariants}
+          animate={big ? 'big' : 'default'}
         />
       </div>
     </>
