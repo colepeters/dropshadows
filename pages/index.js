@@ -57,12 +57,14 @@ export default function Index() {
         <h2>Drop Shadow Configurator</h2>
         <p><a href='https://github.com/colepeters/dsconfig'>GitHub</a></p>
 
-          {[1,2,3,4,5].map(i => (
-            <Container key={i}>
-              <StepLabel>Step {`${i}`}</StepLabel>
-              <Config />
-            </Container>
-          ))}
+          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'top' }}>
+            {[1,2,3,4,5].map(i => (
+              <Container key={i}>
+                <StepLabel>Step {`${i}`}</StepLabel>
+                <Config />
+              </Container>
+            ))}
+          </div>
       </div>
     </>
   )

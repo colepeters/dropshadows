@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 const Data = styled.input`
   margin-left: 0.25rem;
@@ -64,6 +64,8 @@ export default function Config() {
   const [big, setBig] = useState(false)
   const [chonk, setChonk] = useState(false)
 
+  const boxRef = useRef(null)
+
   return (
     <div style={{ marginTop: '2rem' }}>
       <button onClick={() => setBig(big => !big)}>
@@ -72,6 +74,10 @@ export default function Config() {
 
       <button onClick={() => setChonk(chonk => !chonk)}>
         Toggle Chonk
+      </button>
+
+      <button onClick={() => navigator.clipboard.writeText(boxRef.current.style.filter)}>
+        Copy to clipboard
       </button>
 
       <h3>Key</h3>
@@ -140,6 +146,7 @@ export default function Config() {
 
       <div style={{ marginTop: '4rem' }}>
         <MotionBox
+          ref={boxRef}
           ay={ay}
           ar={ar}
           ao={ao}
