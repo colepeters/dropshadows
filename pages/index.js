@@ -23,8 +23,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 2rem 0 0.5rem;
   }
 
-  input {
-    width: 100px;
+  input[type=range] {
+    width: 75px;
+  }
+
+  input[type=number] {
+    width: 6ch;
   }
 
   button {

@@ -2,19 +2,19 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 
-const Data = styled.span`
-  padding-left: 0.25rem;
+const Data = styled.input`
+  margin-left: 0.25rem;
   font-family: Menlo;
   font-size: 12px;
 `
 
-const Control = ({ label, value, ...props }) => (
+const Control = ({ label, value, setValue, ...props }) => (
   <label style={{ display: 'block' }}>
     <span style={{ display: 'inline-block', width: '6rem' }}>
       {label}
     </span>
     <input type='range' name='drop' value={value} {...props} />
-    <Data>{value}</Data>
+    <Data type='number' onChange={e => setValue(e.target.value)} value={value} />
   </label>
 )
 
@@ -81,6 +81,7 @@ export default function Config() {
         min='0'
         max='25'
         value={ky}
+        setValue={setKY}
         onChange={e => setKY(e.target.value)}
       />
 
@@ -90,6 +91,7 @@ export default function Config() {
         min='0'
         max='25'
         value={kr}
+        setValue={setKR}
         onChange={e => setKR(e.target.value)}
       />
 
@@ -100,6 +102,7 @@ export default function Config() {
         max='1'
         step='0.01'
         value={ko}
+        setValue={setKO}
         onChange={e => setKO(e.target.value)}
       />
 
@@ -110,6 +113,7 @@ export default function Config() {
         min='0'
         max='100'
         value={ay}
+        setValue={setAY}
         onChange={e => setAY(e.target.value)}
       />
 
@@ -119,6 +123,7 @@ export default function Config() {
         min='0'
         max='100'
         value={ar}
+        setValue={setAR}
         onChange={e => setAR(e.target.value)}
       />
 
@@ -129,6 +134,7 @@ export default function Config() {
         max='1'
         step='0.01'
         value={ao}
+        setValue={setAO}
         onChange={e => setAO(e.target.value)}
       />
 
