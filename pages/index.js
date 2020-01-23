@@ -9,6 +9,7 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     padding: 2rem 5rem;
     white-space: nowrap;
+    margin-bottom: 20rem;
   }
 
   h1, h2, h3 {
