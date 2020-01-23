@@ -26,6 +26,11 @@ const GlobalStyle = createGlobalStyle`
   input {
     width: 100px;
   }
+
+  button {
+    display: block;
+    margin: 0.5rem 0 0;
+  }
 `
 
 const Container = styled.div`
@@ -45,6 +50,7 @@ export default function Index() {
       <GlobalStyle />
       <div>
         <h2>Drop Shadow Configurator</h2>
+        <p><a href='https://github.com/colepeters/dsconfig'>GitHub</a></p>
 
           {[1,2,3,4,5].map(i => (
             <Container key={i}>

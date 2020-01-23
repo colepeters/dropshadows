@@ -24,7 +24,6 @@ const Box = styled.div.attrs(props => ({
   }
 }))`
   background: white;
-  border-radius: 4px;
   margin: 0 auto;
 `
 
@@ -34,10 +33,22 @@ const boxVariants = {
   default: {
     height: '100px',
     width: '100px',
+    borderRadius: '4px',
   },
   big: {
     height: '250px',
     width: '250px',
+    borderRadius: '4px',
+  },
+  chonk: {
+    height: '100px',
+    width: '100px',
+    borderRadius: '50px',
+  },
+  bigChonk: {
+    height: '250px',
+    width: '250px',
+    borderRadius: '125px',
   }
 }
 
@@ -51,11 +62,16 @@ export default function Config() {
   const [ko, setKO] = useState(0.2)
 
   const [big, setBig] = useState(false)
+  const [chonk, setChonk] = useState(false)
 
   return (
-    <>
+    <div style={{ marginTop: '2rem' }}>
       <button onClick={() => setBig(big => !big)}>
         Toggle Bigboi
+      </button>
+
+      <button onClick={() => setChonk(chonk => !chonk)}>
+        Toggle Chonk
       </button>
 
       <h3>Key</h3>
@@ -125,9 +141,17 @@ export default function Config() {
           kr={kr}
           ko={ko}
           variants={boxVariants}
-          animate={big ? 'big' : 'default'}
+          animate={
+            big
+              ? chonk
+                ? 'bigChonk'
+                : 'big'
+              : chonk
+                ? 'chonk'
+                : 'default'
+          }
         />
       </div>
-    </>
+    </div>
   )
 }
