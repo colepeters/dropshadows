@@ -41,6 +41,7 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.div`
   display: inline-block;
   width: 300px;
+  flex: 0 0 auto;
 `
 
 const StepLabel = styled.h3`
