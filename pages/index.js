@@ -56,7 +56,7 @@ export default function Index() {
       <GlobalStyle />
       <div>
         <h2>Drop Shadow Configurator</h2>
-        <p><a href='https://github.com/colepeters/dsconfig'>GitHub</a></p>
+        <p><a href='https://github.com/colepeters/dropshadows'>GitHub</a></p>
 
           <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'top' }}>
             {[1,2,3,4,5].map(i => (
